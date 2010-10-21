@@ -240,10 +240,13 @@ with the `Entity.is(mixin)` method. For example:
     
 Now, your `Project` and `Task` entities have an additional `lastAnnotated` property.
 They also have a one to many relationship called `notes` to the `Note` entity. 
-And you can also traverse the reverse relationship from a `Note` to its `annotated` object 
+And you can also traverse the reverse relationship from a `Note` to its `annotated` object.
 
 Note that `annotated` is a polymorphic relationship as it may yield either a `Project` 
 or a `Task` (or any other entity which is `Annotatable').
+
+Note: Prefetch is not allowed (yet) on a relationship that targets a mixin. In the example above
+you cannot prefetch the `annotated` relationship when querying the `Note` entity.
     
 Notes: this feature is very experimental at this stage. It needs more testing.
   Support for "is a" relationships (classical inheritance) is also in the works.
